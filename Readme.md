@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
-* Студент: [Макс](https://up.htmlacademy.ru/react/7/user/1336881).
-* Наставник: `Неизвестно`.
+- Студент: [Макс](https://up.htmlacademy.ru/react/7/user/1336881).
+- Наставник: [Алексей Балесный](https://htmlacademy.ru/profile/id221665).
 
 ---
 
