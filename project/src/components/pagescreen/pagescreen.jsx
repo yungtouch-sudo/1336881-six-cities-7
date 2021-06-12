@@ -4,7 +4,7 @@ import Card from '../card/card';
 import PropTypes from 'prop-types';
 
 PageScreen.propTypes = {
-  cardsDetail: PropTypes.array.isRequired,
+  offers: PropTypes.object.isRequired,
 };
 
 function PageScreen(props) {
@@ -70,7 +70,7 @@ function PageScreen(props) {
                 </ul>
               </form>
               <div className='cities__places-list places__list tabs__content'>
-                {props.cardsDetail.map((detail) => (
+                {props.offers.map((detail) => (
                   <Card key={detail.id} detail={detail}></Card>))}
               </div>
             </section>

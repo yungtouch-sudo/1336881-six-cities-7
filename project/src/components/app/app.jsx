@@ -7,13 +7,7 @@ import Favorites from '../favorites/favorites';
 import Offer from '../offer/offer';
 import Err404 from '../err404/err404';
 
-const cardsDetail = [
-  { 'id': 1, 'title': 'Beautiful &amp; luxurious apartment at great location' },
-  { 'id': 2, 'title': 'Wood and stone place' },
-  { 'id': 3, 'title': 'Canal View Prinsengracht' },
-  { 'id': 4, 'title': 'Nice, cozy, warm big bed apartment' },
-  { 'id': 5, 'title': 'Wood and stone place' },
-];
+import offers from "../../mocks/offers";
 
 const AppRoute = {
   ROOT: '/',
@@ -29,7 +23,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.ROOT}>
-          <PageScreen cardsDetail={cardsDetail} />
+          <PageScreen offers={offers} />
         </Route>
         <Route exact path={AppRoute.LOGIN}>
           <Login />
