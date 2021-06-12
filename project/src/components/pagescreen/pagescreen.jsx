@@ -4,7 +4,7 @@ import Card from '../card/card';
 import PropTypes from 'prop-types';
 
 PageScreen.propTypes = {
-  offers: PropTypes.object.isRequired,
+  offers: PropTypes.array.isRequired,
 };
 
 function PageScreen(props) {

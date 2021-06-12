@@ -9,6 +9,7 @@ Card.propTypes = {
 };
 
 function Card(props) {
+  console.log(props)
   return (
     <article className='cities__place-card place-card'>
       <div className='place-card__mark'>

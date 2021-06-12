@@ -1,7 +1,11 @@
 import React from 'react';
 import Header from '../header/header';
 
-function Offer() {
+import { useParams } from "react-router-dom";
+
+function Offer(props) {
+  let { id } = useParams();
+  console.log(id)
   return (
     <div className="page">
       <Header />

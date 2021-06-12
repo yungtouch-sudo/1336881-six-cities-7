@@ -9,6 +9,7 @@ import Err404 from '../err404/err404';
 
 import offers from "../../mocks/offers";
 
+
 const AppRoute = {
   ROOT: '/',
   LOGIN: '/login',
@@ -32,7 +33,7 @@ function App() {
           <Favorites />
         </Route>
         <Route exact path={AppRoute.ROOM}>
-          <Offer />
+          <Offer offers={offers}/>
         </Route>
         <Route path={'/'}>
           <Err404 />
