@@ -62,7 +62,7 @@ function PageScreen(props) {
                     <use xlinkHref='#icon-arrow-select' />
                   </svg>
                 </span>
-                <ul className='places__options places__options--custom places__options--opened'>
+                <ul className='places__options places__options--custom places__options--closed'>
                   <li className='places__option places__option--active' tabIndex={0}>Popular</li>
                   <li className='places__option' tabIndex={0}>Price: low to high</li>
                   <li className='places__option' tabIndex={0}>Price: high to low</li>
@@ -71,7 +71,7 @@ function PageScreen(props) {
               </form>
               <div className='cities__places-list places__list tabs__content'>
                 {props.offers.map((detail) => (
-                  <Card key={detail.id} detail={detail}></Card>))}
+                  <Card  key={detail.id} detail={detail}></Card>))}
               </div>
             </section>
             <div className='cities__right-section'>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
@@ -8,10 +8,13 @@ Card.propTypes = {
   detail: PropTypes.object.isRequired,
 };
 
+
+
 function Card(props) {
-  console.log(props)
+  const [activeCardId, setActiveCardId] = useState('');
+  console.log(activeCardId);
   return (
-    <article className='cities__place-card place-card'>
+    <article onMouseEnter={function (){let activeCardId = props.detail.id; setActiveCardId(activeCardId)}} onMouseLeave={function (){setActiveCardId('')}} className='cities__place-card place-card'>
       <div className='place-card__mark'>
         <span>Premium</span>
       </div>

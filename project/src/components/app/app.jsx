@@ -18,6 +18,7 @@ const AppRoute = {
 };
 
 
+
 function App() {
 
   return (
@@ -30,11 +31,22 @@ function App() {
           <Login />
         </Route>
         <Route exact path={AppRoute.FAVORITES}>
-          <Favorites />
+          <Favorites offers={offers}/>
         </Route>
-        <Route exact path={AppRoute.ROOM}>
-          <Offer offers={offers}/>
-        </Route>
+        <Route exact path={AppRoute.ROOM}
+          render={props => {
+            const currentOffer = offers.find(function(el){
+              return el.id === props.match.params.id;
+            });
+            if (!currentOffer){
+              return (
+                <Err404 />
+              )
+            } else {
+              return <Offer currentOffer={currentOffer} offers={offers}/>
+            }
+          }}
+        />
         <Route path={'/'}>
           <Err404 />
         </Route>
