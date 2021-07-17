@@ -1,57 +1,54 @@
-import React from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
-
-import PageScreen from '../pagescreen/pagescreen';
+import React, { useEffect } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { checkAuth } from '../../store/api-actions';
+import LoadingScreen from '../loading-screen/loading-screen';
+import Main from '../main/main';
+import RoomContainer from '../room/room-container';
 import Login from '../login/login';
 import Favorites from '../favorites/favorites';
-import Offer from '../offer/offer';
-import Err404 from '../err404/err404';
-
-import offers from "../../mocks/offers";
-
-
-const AppRoute = {
-  ROOT: '/',
-  LOGIN: '/login',
-  FAVORITES: '/favorites',
-  ROOM: '/offer/:id',
-};
-
-
+import NotFound from '../not-found/not-found';
+import PrivateRoute from '../private-route/private-route';
 
 function App() {
+  const { isAuthInfoLoaded, authStatus } = useSelector((state) => state.USER);
+  const dispatch = useDispatch();
+
+  const isAuthorized = authStatus === AuthorizationStatus.AUTH;
+
+  useEffect(() => {
+    if (!isAuthInfoLoaded) {
+      dispatch((checkAuth()));
+    }
+  }, [dispatch, isAuthInfoLoaded]);
+
+  if (!isAuthInfoLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
 
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path={AppRoute.ROOT}>
-          <PageScreen offers={offers} />
-        </Route>
-        <Route exact path={AppRoute.LOGIN}>
-          <Login />
-        </Route>
-        <Route exact path={AppRoute.FAVORITES}>
-          <Favorites offers={offers}/>
-        </Route>
-        <Route exact path={AppRoute.ROOM}
-          render={props => {
-            const currentOffer = offers.find(function(el){
-              return el.id === props.match.params.id;
-            });
-            if (!currentOffer){
-              return (
-                <Err404 />
-              )
-            } else {
-              return <Offer currentOffer={currentOffer} offers={offers}/>
-            }
-          }}
-        />
-        <Route path={'/'}>
-          <Err404 />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <Switch>
+      <Route exact path={AppRoute.MAIN}>
+        <Main />
+      </Route>
+      <Route exact path={AppRoute.ROOM}>
+        <RoomContainer />
+      </Route>
+      <Route exact path={AppRoute.SIGN_IN}>
+        {isAuthorized ? <Redirect to={AppRoute.MAIN} /> : <Login />}
+      </Route>
+      <PrivateRoute exact
+        path={AppRoute.FAVORITES}
+        render={() => <Favorites />}
+      >
+      </PrivateRoute>
+      <Route>
+        <NotFound />
+      </Route>
+    </Switch>
   );
 }
 
