@@ -76,10 +76,6 @@ export const ActionCreator = {
     type: ActionType.SET_AUTH_INFO,
     payload: info,
   }),
-  loadAuthInfo: (info) => ({
-    type: ActionType.LOAD_AUTH_INFO,
-    payload: info,
-  }),
   requireAuthorization: (status) => ({
     type: ActionType.REQUIRED_AUTHORIZATION,
     payload: status,

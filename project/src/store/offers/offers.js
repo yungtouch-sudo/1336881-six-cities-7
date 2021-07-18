@@ -44,11 +44,9 @@ const offers = createReducer(initialState, (builder) => {
     .addCase(ActionType.LOAD_FAVORITE_OFFERS, (state, action) => {
       state.favoriteOffers = adaptOffersData(action.payload);
     })
-    // to-do test
     .addCase(ActionType.ADD_FAVORITE, (state, action) => {
       state.favoriteOffers.push(adaptOfferData(action.payload));
     })
-    // to-do test
     .addCase(ActionType.REMOVE_FAVORITE, (state, action) => {
       state.favoriteOffers = state.favoriteOffers.filter((item) => item.hotelId !== action.payload.id);
     })
@@ -59,9 +57,6 @@ const offers = createReducer(initialState, (builder) => {
     .addCase(ActionType.LOAD_COMMENT, (state, action) => {
       state.isCommentLoading = action.payload;
     })
-    // .addCase(ActionType.SUBMIT_COMMENT, (state, action) => {
-    //   state.isCommentSubmit = action.payload;
-    // })
     .addCase(ActionType.SET_NOT_FOUND_OFFER, (state) => {
       state.offerNotFound = true;
     })

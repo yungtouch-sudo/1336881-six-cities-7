@@ -62,7 +62,7 @@ function Main() {
                 <OfferSorting />
                 <OfferList
                   cityOffers={cityOffers}
-                  сardType={CardType.MAIN}
+                  cardType={CardType.MAIN}
                   onOfferFocus={handleOfferFocus}
                   onOfferBlur={handleOfferBlur}
                 />

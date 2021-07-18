@@ -4,7 +4,7 @@ import { offerPropTypes } from '../../prop-types/offer';
 import Offer from '../offer/offer';
 
 function OfferList(props) {
-  const { cityOffers, сardType, onOfferFocus, onOfferBlur } = props;
+  const { cityOffers, cardType, onOfferFocus, onOfferBlur } = props;
 
   return (
     <div className="cities__places-list places__list tabs__content">
@@ -14,7 +14,7 @@ function OfferList(props) {
           onOfferBlur={onOfferBlur}
           key={offer.hotelId}
           offer={offer}
-          сardType={сardType}
+          cardType={cardType}
         />))}
     </div>
   );
@@ -22,7 +22,7 @@ function OfferList(props) {
 
 OfferList.propTypes = {
   cityOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
-  сardType: PropTypes.string.isRequired,
+  cardType: PropTypes.string.isRequired,
   onOfferFocus: PropTypes.func.isRequired,
   onOfferBlur: PropTypes.func.isRequired,
 };

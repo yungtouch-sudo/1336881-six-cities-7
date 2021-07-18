@@ -1,11 +1,11 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {offerPropTypes} from '../../prop-types/offer';
+import { offerPropTypes } from '../../prop-types/offer';
 import Offer from '../offer/offer';
 
 function CityFavorites(props) {
-  const {offers, сardType, city} = props;
+  const { offers, cardType, city } = props;
 
   return (
     <li className="favorites__locations-items">
@@ -17,7 +17,7 @@ function CityFavorites(props) {
         </div>
       </div>
       <div className="favorites__places">
-        {offers.map((offer) => <Offer key={offer.hotelId} offer={offer} сardType={сardType} />)}
+        {offers.map((offer) => <Offer key={offer.hotelId} offer={offer} cardType={cardType} />)}
       </div>
     </li>
   );
@@ -25,7 +25,7 @@ function CityFavorites(props) {
 
 CityFavorites.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes).isRequired,
-  сardType: PropTypes.string.isRequired,
+  cardType: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
 };
 
