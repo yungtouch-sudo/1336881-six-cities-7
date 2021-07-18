@@ -1,10 +1,14 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {AuthorizationStatus} from '../../const';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { AuthorizationStatus } from '../../const';
+import { logout } from '../../store/api-actions';
 
 function Header() {
-  const {authStatus, authInfo} = useSelector((state) => state.USER);
+  const { authStatus, authInfo } = useSelector((state) => state.USER);
+
+  const dispatch = useDispatch();
 
   const isAuthorized = authStatus === AuthorizationStatus.AUTH;
 
@@ -32,6 +36,22 @@ function Header() {
                   <span className="header__user-name user__name">{isAuthorized ? authInfo.email : 'Sign in'}</span>
                 </Link>
               </li>
+              {
+                isAuthorized && (
+                  <li className="header__nav-item">
+                    <a
+                      className="header__nav-link"
+                      href={'/'}
+                      onClick={(e) => {
+                        dispatch(logout());
+                        e.preventDefault();
+                      }}
+                    >
+                      <span className="header__signout">Sign out</span>
+                    </a>
+                  </li>
+                )
+              }
             </ul>
           </nav>
         </div>
@@ -39,5 +59,8 @@ function Header() {
     </header>
   );
 }
+
+
+
 
 export default Header;

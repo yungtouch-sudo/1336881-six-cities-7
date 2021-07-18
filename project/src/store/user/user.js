@@ -23,6 +23,10 @@ const user = createReducer(initialState, (builder) => {
   builder.addCase(ActionType.CHECK_LOGIN, (state, action) => {
     state.isCorrectValue = action.payload;
   });
+  builder.addCase(ActionType.LOGOUT, (state, action) => {
+    state.authStatus = AuthorizationStatus.NO_AUTH;
+    state.authInfo = {};
+  });
 });
 
 export {user};

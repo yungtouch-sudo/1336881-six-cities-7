@@ -18,6 +18,7 @@ export const ActionType = {
   REDIRECT_TO_ROUTE: 'app/redirectToRoute',
   SET_ERROR: 'app/setError',
   CHECK_LOGIN: 'user/checkLogin',
+  LOGOUT: 'user/logout',
 };
 
 export const ActionCreator = {
@@ -94,5 +95,8 @@ export const ActionCreator = {
   checkLogin: (value) => ({
     type: ActionType.CHECK_LOGIN,
     payload: value,
+  }),
+  logout: () => ({
+    type: ActionType.LOGOUT,
   }),
 };
